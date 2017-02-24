@@ -17,8 +17,9 @@ app.get('/pets/:id', function(req, res){
       return res.sendStatus(500);
     }
     var id = Number.parseInt(req.params.id);
-    var pets = JSON.parse(petsJSON);
 
+    var pets = JSON.parse(petsJSON);
+  
     if (id < 0 || id >= pets.length || Number.isNaN(id)) {
       res.set('Content-Type', 'text/plain');
       return res.sendStatus(404);
