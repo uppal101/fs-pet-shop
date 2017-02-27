@@ -6,7 +6,7 @@ var petsPath = path.join(__dirname, 'pets.json');
 
 var express = require('express');
 var app = express();
-var port = 8000;
+app.set('port', (process.env.PORT || 8000));
 
 app.disable('x-powered-by');
 
@@ -17,9 +17,8 @@ app.get('/pets/:id', function(req, res){
       return res.sendStatus(500);
     }
     var id = Number.parseInt(req.params.id);
-
     var pets = JSON.parse(petsJSON);
-  
+
     if (id < 0 || id >= pets.length || Number.isNaN(id)) {
       res.set('Content-Type', 'text/plain');
       return res.sendStatus(404);

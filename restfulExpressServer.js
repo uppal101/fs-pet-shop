@@ -6,7 +6,9 @@ var petsPath = path.join(__dirname, 'pets.json');
 
 var express = require('express');
 var app = express();
-var port = 8000;
+
+app.set('port', (process.env.PORT || 8000));
+
 
 app.disable('x-powered-by');
 
